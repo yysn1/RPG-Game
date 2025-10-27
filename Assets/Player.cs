@@ -6,18 +6,30 @@ public class Player : MonoBehaviour
     public Animator anim { get; private set; }
     public Rigidbody2D rb { get; private set; }
 
-    private InputSystem_Actions input;
+    public InputSystem_Actions input { get; private set; }
     private StateMachine stateMachine;
 
     public Vector2 moveInput { get; private set; }
 
     public PlayerIdleState idleState { get; private set; }
     public PlayerMoveState moveState { get; private set; }
+    public PlayerJumpState jumpState { get; private set; }
+    public PlayerFallState fallState { get; private set; }
+
 
     [Header("Movement details")]
     public float moveSpeed = 12f;
+    public float jumpForce = 8f;
+
+    [Range(0, 1)]
+    public float inAirMoveMultiplier = 0.7f;
 
     private bool isFacingRight = true;
+
+    [Header("Collision detection")]
+    [SerializeField] private float groundCheckDistance = 0.2f;
+    [SerializeField] private LayerMask whatIsGround;
+    public bool groundDetected { get ; private set; }
 
     private void Awake()
     {
@@ -29,6 +41,8 @@ public class Player : MonoBehaviour
 
         idleState = new PlayerIdleState(this, stateMachine, "idle");
         moveState = new PlayerMoveState(this, stateMachine, "move");
+        jumpState = new PlayerJumpState(this, stateMachine, "jumpFall");
+        fallState = new PlayerFallState(this, stateMachine, "jumpFall");
     }
     private void OnEnable()
     {
@@ -49,6 +63,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        HandleGroundDetection();
         stateMachine.UpdataActiveState();
     }
 
@@ -74,5 +89,12 @@ public class Player : MonoBehaviour
     {
         isFacingRight = !isFacingRight;
         transform.Rotate(0f, 180f, 0f);
+    }
+
+    private void HandleGroundDetection() => groundDetected = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, whatIsGround);
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawLine(transform.position, new Vector3(transform.position.x,transform.position.y - groundCheckDistance));
     }
 }
