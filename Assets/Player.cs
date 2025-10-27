@@ -10,11 +10,14 @@ public class Player : MonoBehaviour
     private StateMachine stateMachine;
 
     public Vector2 moveInput { get; private set; }
+    public Vector2 wallJumpForce;
 
     public PlayerIdleState idleState { get; private set; }
     public PlayerMoveState moveState { get; private set; }
     public PlayerJumpState jumpState { get; private set; }
     public PlayerFallState fallState { get; private set; }
+    public PlayerWallSlideState wallSlideState { get; private set; }
+    public PlayerWallJumpState wallJumpState { get; private set; }
 
 
     [Header("Movement details")]
@@ -23,13 +26,18 @@ public class Player : MonoBehaviour
 
     [Range(0, 1)]
     public float inAirMoveMultiplier = 0.7f;
+    [Range(0, 1)]
+    public float wallSlideSpeedMultiplier = 0.5f;
 
     private bool isFacingRight = true;
+    public int facingDir {  get; private set; } = 1;
 
     [Header("Collision detection")]
     [SerializeField] private float groundCheckDistance = 0.2f;
+    [SerializeField] private float wallCheckDistance = 0.5f;
     [SerializeField] private LayerMask whatIsGround;
     public bool groundDetected { get ; private set; }
+    public bool wallDetected { get; private set; }
 
     private void Awake()
     {
@@ -43,6 +51,8 @@ public class Player : MonoBehaviour
         moveState = new PlayerMoveState(this, stateMachine, "move");
         jumpState = new PlayerJumpState(this, stateMachine, "jumpFall");
         fallState = new PlayerFallState(this, stateMachine, "jumpFall");
+        wallSlideState = new PlayerWallSlideState(this, stateMachine, "wallSlide");
+        wallJumpState = new PlayerWallJumpState(this, stateMachine, "jumpFall");
     }
     private void OnEnable()
     {
@@ -64,6 +74,7 @@ public class Player : MonoBehaviour
     private void Update()
     {
         HandleGroundDetection();
+        HandleWallDetection();
         stateMachine.UpdataActiveState();
     }
 
@@ -85,16 +96,19 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void Flip()
+    public void Flip()
     {
         isFacingRight = !isFacingRight;
+        facingDir *= -1;
         transform.Rotate(0f, 180f, 0f);
     }
 
     private void HandleGroundDetection() => groundDetected = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, whatIsGround);
+    private void HandleWallDetection() => wallDetected = Physics2D.Raycast(transform.position, Vector2.right * (isFacingRight ? 1 : -1), wallCheckDistance, whatIsGround);
 
     private void OnDrawGizmos()
     {
         Gizmos.DrawLine(transform.position, new Vector3(transform.position.x,transform.position.y - groundCheckDistance));
+        Gizmos.DrawLine(transform.position, new Vector3(transform.position.x + (wallCheckDistance * (isFacingRight ? 1 : -1)), transform.position.y));
     }
 }

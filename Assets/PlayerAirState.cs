@@ -21,8 +21,6 @@ public class PlayerAirState : EntityState
     {
         base.Update();
 
-        player.SetVelocity(Mathf.Lerp(rb.linearVelocity.x, 0, 0.1f), rb.linearVelocity.y);
-
         if (player.moveInput.x != 0)
         {
             player.SetVelocity(player.moveInput.x * (player.moveSpeed * player.inAirMoveMultiplier), rb.linearVelocity.y);

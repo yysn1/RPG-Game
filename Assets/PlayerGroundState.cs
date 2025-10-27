@@ -9,6 +9,8 @@ public class PlayerGroundState : EntityState
     public override void Enter()
     {
         base.Enter();
+
+        player.SetVelocity(0, rb.linearVelocity.y);
     }
 
     public override void Exit()
@@ -20,7 +22,7 @@ public class PlayerGroundState : EntityState
     {
         base.Update();
 
-        if (rb.linearVelocity.y < 0f)
+        if (rb.linearVelocity.y < 0f && !player.groundDetected)
         {
             stateMachine.ChangeState(player.fallState);
         }
