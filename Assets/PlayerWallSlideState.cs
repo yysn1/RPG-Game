@@ -22,7 +22,7 @@ public class PlayerWallSlideState : EntityState
 
         HandleWallSlide();
 
-        if (input.Player.Jump.WasPerformedThisFrame())
+        if (input.Player.Jump.WasPressedThisFrame())
         {
             stateMachine.ChangeState(player.wallJumpState);
         }

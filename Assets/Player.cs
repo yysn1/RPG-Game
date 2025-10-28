@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEditor.Tilemaps;
 using UnityEngine;
 
@@ -18,7 +20,14 @@ public class Player : MonoBehaviour
     public PlayerFallState fallState { get; private set; }
     public PlayerWallSlideState wallSlideState { get; private set; }
     public PlayerWallJumpState wallJumpState { get; private set; }
+    public PlayerDashState dashState { get; private set; }
+    public PlayerBasicAttackState basicAttackState { get; private set; }
 
+    [Header("Attack details")]
+    public Vector2[] attackVelocity;
+    public float attackVelocityDuration = .1f;
+    public float comboResetTime = 1f;
+    private Coroutine queuedAttackCo;
 
     [Header("Movement details")]
     public float moveSpeed = 12f;
@@ -28,6 +37,9 @@ public class Player : MonoBehaviour
     public float inAirMoveMultiplier = 0.7f;
     [Range(0, 1)]
     public float wallSlideSpeedMultiplier = 0.5f;
+    [Space]
+    public float dashDuration = .25f;
+    public float dashSpeed = 20f;
 
     private bool isFacingRight = true;
     public int facingDir {  get; private set; } = 1;
@@ -53,6 +65,8 @@ public class Player : MonoBehaviour
         fallState = new PlayerFallState(this, stateMachine, "jumpFall");
         wallSlideState = new PlayerWallSlideState(this, stateMachine, "wallSlide");
         wallJumpState = new PlayerWallJumpState(this, stateMachine, "jumpFall");
+        dashState = new PlayerDashState(this, stateMachine, "dash");
+        basicAttackState = new PlayerBasicAttackState(this, stateMachine, "basicAttack");
     }
     private void OnEnable()
     {
@@ -76,6 +90,25 @@ public class Player : MonoBehaviour
         HandleGroundDetection();
         HandleWallDetection();
         stateMachine.UpdataActiveState();
+    }
+
+    public void EnterAttackStateWithDelay()
+    {
+        if(queuedAttackCo != null)
+            StopCoroutine(queuedAttackCo);
+
+        queuedAttackCo = StartCoroutine(EnterAttackStateWithDelayCo());
+    }
+
+    private IEnumerator EnterAttackStateWithDelayCo()
+    {
+        yield return new WaitForEndOfFrame();
+        stateMachine.ChangeState(basicAttackState);
+    }
+
+    public void CallAnimationTrigger()
+    {
+        stateMachine.currentState.CallAnimationTrigger();
     }
 
     public void SetVelocity(float xVelocity, float yVelocity)

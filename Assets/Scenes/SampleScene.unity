@@ -136,7 +136,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &173940858
 Transform:
   m_ObjectHideFlags: 0
@@ -645,11 +645,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2be050da4840934b9e998bd6e38c1cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  wallJumpForce: {x: 10, y: 12}
+  wallJumpForce: {x: 10, y: 14}
+  attackVelocity:
+  - {x: 3, y: 1.5}
+  - {x: 1, y: 2.5}
+  - {x: 4, y: 5}
+  attackVelocityDuration: 0.1
+  comboResetTime: 1
   moveSpeed: 10
   jumpForce: 12
   inAirMoveMultiplier: 0.7
   wallSlideSpeedMultiplier: 0.5
+  dashDuration: 0.25
+  dashSpeed: 20
   groundCheckDistance: 1.35
   wallCheckDistance: 0.4
   whatIsGround:
@@ -746,6 +754,7 @@ GameObject:
   - component: {fileID: 1006218836}
   - component: {fileID: 1006218838}
   - component: {fileID: 1006218837}
+  - component: {fileID: 1006218839}
   m_Layer: 0
   m_Name: Animator
   m_TagString: Untagged
@@ -848,6 +857,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1006218839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1006218835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d647bf5933fcf264c8df2d11b999e41d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAnimationTriggers
 --- !u!1 &1322363008
 GameObject:
   m_ObjectHideFlags: 0
@@ -899,7 +920,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1889452564
 Transform:
   m_ObjectHideFlags: 0
