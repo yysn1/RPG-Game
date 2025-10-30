@@ -14,7 +14,8 @@ public class PlayerDashState : EntityState
     {
         base.Enter();
 
-        dashDir = player.facingDir;
+        // Determine dash direction based on player input or facing direction
+        dashDir = player.moveInput.x != 0 ? (int)player.moveInput.x : player.facingDir;
 
         stateTimer = player.dashDuration;
 

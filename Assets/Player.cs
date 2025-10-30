@@ -22,9 +22,11 @@ public class Player : MonoBehaviour
     public PlayerWallJumpState wallJumpState { get; private set; }
     public PlayerDashState dashState { get; private set; }
     public PlayerBasicAttackState basicAttackState { get; private set; }
+    public PlayerJumpAttackState jumpAttackState { get; private set; }
 
     [Header("Attack details")]
     public Vector2[] attackVelocity;
+    public Vector2 jumpAttackVelocity;
     public float attackVelocityDuration = .1f;
     public float comboResetTime = 1f;
     private Coroutine queuedAttackCo;
@@ -48,6 +50,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float groundCheckDistance = 0.2f;
     [SerializeField] private float wallCheckDistance = 0.5f;
     [SerializeField] private LayerMask whatIsGround;
+    [SerializeField] private Transform primaryWallCheck;
+    [SerializeField] private Transform secondaryWallCheck;
     public bool groundDetected { get ; private set; }
     public bool wallDetected { get; private set; }
 
@@ -67,6 +71,7 @@ public class Player : MonoBehaviour
         wallJumpState = new PlayerWallJumpState(this, stateMachine, "jumpFall");
         dashState = new PlayerDashState(this, stateMachine, "dash");
         basicAttackState = new PlayerBasicAttackState(this, stateMachine, "basicAttack");
+        jumpAttackState = new PlayerJumpAttackState(this, stateMachine, "jumpAttack");
     }
     private void OnEnable()
     {
@@ -137,11 +142,13 @@ public class Player : MonoBehaviour
     }
 
     private void HandleGroundDetection() => groundDetected = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, whatIsGround);
-    private void HandleWallDetection() => wallDetected = Physics2D.Raycast(transform.position, Vector2.right * (isFacingRight ? 1 : -1), wallCheckDistance, whatIsGround);
+    private void HandleWallDetection() => wallDetected = Physics2D.Raycast(primaryWallCheck.position, Vector2.right * (isFacingRight ? 1 : -1), wallCheckDistance, whatIsGround)
+                                                      && Physics2D.Raycast(secondaryWallCheck.position, Vector2.right * (isFacingRight ? 1 : -1), wallCheckDistance, whatIsGround);
 
     private void OnDrawGizmos()
     {
         Gizmos.DrawLine(transform.position, new Vector3(transform.position.x,transform.position.y - groundCheckDistance));
-        Gizmos.DrawLine(transform.position, new Vector3(transform.position.x + (wallCheckDistance * (isFacingRight ? 1 : -1)), transform.position.y));
+        Gizmos.DrawLine(primaryWallCheck.position, new Vector3(primaryWallCheck.position.x + (wallCheckDistance * (isFacingRight ? 1 : -1)), primaryWallCheck.position.y));
+        Gizmos.DrawLine(secondaryWallCheck.position, new Vector3(secondaryWallCheck.position.x + (wallCheckDistance * (isFacingRight ? 1 : -1)), secondaryWallCheck.position.y));
     }
 }
