@@ -124,11 +124,11 @@ public class Player : MonoBehaviour
 
     private void HandleFlip(float xVelocity)
     {
-        if (xVelocity > 0 && !isFacingRight)
+        if (xVelocity > 0f && !isFacingRight)
         {
             Flip();
         }
-        else if (xVelocity < 0 && isFacingRight)
+        else if (xVelocity < 0f && isFacingRight)
         {
             Flip();
         }

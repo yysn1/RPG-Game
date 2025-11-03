@@ -23,7 +23,7 @@ public class PlayerJumpState : PlayerAirState
         base.Update();
 
         // We need to be sure we transition to the fall state only if we are not in the jump attack state
-        if (rb.linearVelocity.y <= 0.001f && stateMachine.currentState != player.jumpAttackState)
+        if (rb.linearVelocity.y <= 0f && stateMachine.currentState != player.jumpAttackState)
         {
             stateMachine.ChangeState(player.fallState);
         }
