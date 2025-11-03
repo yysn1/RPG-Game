@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerGroundState : EntityState
+public class PlayerGroundState : PlayerState
 {
     public PlayerGroundState(Player player, StateMachine stateMachine, string animBoolName) : base(player, stateMachine, animBoolName)
     {
@@ -11,11 +11,6 @@ public class PlayerGroundState : EntityState
         base.Enter();
 
         player.SetVelocity(0, rb.linearVelocity.y);
-    }
-
-    public override void Exit()
-    {
-        base.Exit();
     }
 
     public override void Update()

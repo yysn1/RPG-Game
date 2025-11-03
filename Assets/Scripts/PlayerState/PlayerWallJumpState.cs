@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerWallJumpState : EntityState
+public class PlayerWallJumpState : PlayerState
 {
     private float controlLockTime = 0.2f;
 
@@ -15,11 +15,6 @@ public class PlayerWallJumpState : EntityState
         controlLockTime = .2f;
 
         player.SetVelocity(player.wallJumpForce.x * -player.facingDir, player.wallJumpForce.y);
-    }
-
-    public override void Exit()
-    {
-        base.Exit();
     }
 
     public override void Update()

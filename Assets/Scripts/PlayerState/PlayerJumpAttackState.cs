@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerJumpAttackState : EntityState
+public class PlayerJumpAttackState : PlayerState
 {
     private bool touchGround;
 
@@ -14,11 +14,6 @@ public class PlayerJumpAttackState : EntityState
         touchGround = false;
 
         player.SetVelocity(player.jumpAttackVelocity.x * player.facingDir, player.jumpAttackVelocity.y);
-    }
-
-    public override void Exit()
-    {
-        base.Exit();
     }
 
     public override void Update()

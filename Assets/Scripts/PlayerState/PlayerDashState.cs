@@ -1,7 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class PlayerDashState : EntityState
+public class PlayerDashState : PlayerState
 {
     private float originalGravityScale;
     private int dashDir;

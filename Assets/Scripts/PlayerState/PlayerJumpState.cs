@@ -13,11 +13,6 @@ public class PlayerJumpState : PlayerAirState
         player.SetVelocity(rb.linearVelocity.x, player.jumpForce);
     }
 
-    public override void Exit()
-    {
-        base.Exit();
-    }
-
     public override void Update()
     {
         base.Update();
