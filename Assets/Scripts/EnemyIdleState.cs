@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyIdleState : EnemyState
+public class EnemyIdleState : EnemyGroundState
 {
     public EnemyIdleState(Enemy enemy, StateMachine stateMachine, string animBoolName) : base(enemy, stateMachine, animBoolName)
     {
