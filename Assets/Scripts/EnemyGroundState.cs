@@ -10,7 +10,7 @@ public class EnemyGroundState : EnemyState
     {
         base.Update();
 
-        if (enemy.PlayerDetected())
+        if (enemy.PlayerDetection())
         {
             stateMachine.ChangeState(enemy.battleState);
         }

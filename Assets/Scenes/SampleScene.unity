@@ -178,7 +178,7 @@ Transform:
   m_GameObject: {fileID: 198470610}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.6467867, y: -2.6097093, z: 15.258335}
+  m_LocalPosition: {x: 1.9477868, y: -2.6887093, z: 15.258335}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -21626,7 +21626,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.6467867, y: -2.6097093, z: 15.258335}
+  m_LocalPosition: {x: 1.9477868, y: -2.6887093, z: 15.258335}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -21955,7 +21955,7 @@ Transform:
   m_GameObject: {fileID: 964348712}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.44, y: -1.53, z: 0}
+  m_LocalPosition: {x: -5.139, y: -1.609, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -39440,8 +39440,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.25161093}
-  m_Size: {x: 0.5, y: 1.5261612}
+  m_Offset: {x: 0, y: -0.24572328}
+  m_Size: {x: 0.5, y: 1.5143857}
   m_Direction: 0
 --- !u!50 &1248922737
 Rigidbody2D:
@@ -39490,6 +39490,11 @@ MonoBehaviour:
   groundCheck: {fileID: 7499846}
   primaryWallCheck: {fileID: 1248922739}
   secondaryWallCheck: {fileID: 0}
+  battleMoveSpeed: 2.5
+  attackDestance: 2
+  battleTimeDuration: 5
+  minRetreatDistance: 1
+  retreatVelocity: {x: 5, y: 3}
   moveSpeed: 1.4
   idleTime: 2
   moveAnimSpeedMultiplier: 1
@@ -39507,7 +39512,7 @@ Transform:
   m_GameObject: {fileID: 1248922735}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.93, y: -1.63, z: 0}
+  m_LocalPosition: {x: -14.13, y: -1.65, z: 0}
   m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
   m_ConstrainProportionsScale: 1
   m_Children:

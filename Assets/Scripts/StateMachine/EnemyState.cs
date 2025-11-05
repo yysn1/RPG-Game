@@ -3,6 +3,7 @@ using UnityEngine;
 public class EnemyState : EntityState
 {
     protected Enemy enemy;
+    private float battleAnimSpeedMultiplier;
 
     public EnemyState(Enemy enemy, StateMachine stateMachine, string animBoolName) : base(stateMachine, animBoolName)
     {
@@ -12,13 +13,14 @@ public class EnemyState : EntityState
         rb = enemy.rb;
     }
 
-    public override void Update()
+    public override void UpdateAnimationParameters()
     {
-        base.Update();
+        base.UpdateAnimationParameters();
 
-        if (Input.GetKeyDown(KeyCode.F))
-            stateMachine.ChangeState(enemy.attackState);
+        battleAnimSpeedMultiplier = enemy.battleMoveSpeed / enemy.moveSpeed;
 
+        anim.SetFloat("battleAnimSpeedMultiplier", battleAnimSpeedMultiplier);
         anim.SetFloat("moveAnimSpeedMultiplier", enemy.moveAnimSpeedMultiplier);
+        anim.SetFloat("xVelocity", rb.linearVelocity.x);
     }
 }
