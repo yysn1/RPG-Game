@@ -1,4 +1,4 @@
-using Unity.VisualScripting;
+using System.Collections;
 using UnityEngine;
 
 public class Entity : MonoBehaviour
@@ -9,7 +9,7 @@ public class Entity : MonoBehaviour
     protected StateMachine stateMachine;
 
     private bool isFacingRight = true;
-    public int facingDir {  get; private set; } = 1;
+    public int facingDir { get; private set; } = 1;
 
     [Header("Collision detection")]
     [SerializeField] protected LayerMask whatIsGround;
@@ -18,8 +18,12 @@ public class Entity : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private Transform primaryWallCheck;
     [SerializeField] private Transform secondaryWallCheck;
-    public bool groundDetected { get ; private set; }
+    public bool groundDetected { get; private set; }
     public bool wallDetected { get; private set; }
+
+    // Condition variables
+    private bool isKnocked;
+    private Coroutine knockbackCo;
 
     protected virtual void Awake()
     {
@@ -27,9 +31,9 @@ public class Entity : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         stateMachine = new StateMachine();
-        
+
     }
-    
+
     protected virtual void Start()
     {
 
@@ -47,8 +51,32 @@ public class Entity : MonoBehaviour
         stateMachine.currentState.AnimationTrigger();
     }
 
+    public void ReciveKnockback(Vector2 knockback, float duration)
+    {
+        if (knockbackCo != null)
+        {
+            StopCoroutine(knockbackCo);
+        }
+
+        knockbackCo = StartCoroutine(KonckbackCO(knockback, duration));
+    }
+
+    private IEnumerator KonckbackCO(Vector2 knockback, float duration)
+    {
+        isKnocked = true;
+        rb.linearVelocity = knockback;
+
+        yield return new WaitForSeconds(duration);
+
+        rb.linearVelocity = Vector2.zero;
+        isKnocked = false;
+    }
+
     public void SetVelocity(float xVelocity, float yVelocity)
     {
+        if (isKnocked)
+            return;
+
         rb.linearVelocity = new Vector2(xVelocity, yVelocity);
         HandleFlip(xVelocity);
     }
@@ -87,7 +115,7 @@ public class Entity : MonoBehaviour
     }
     protected virtual void OnDrawGizmos()
     {
-        Gizmos.DrawLine(groundCheck.position, new Vector3(groundCheck.position.x,groundCheck.position.y - groundCheckDistance));
+        Gizmos.DrawLine(groundCheck.position, new Vector3(groundCheck.position.x, groundCheck.position.y - groundCheckDistance));
         Gizmos.DrawLine(primaryWallCheck.position, new Vector3(primaryWallCheck.position.x + (wallCheckDistance * (isFacingRight ? 1 : -1)), primaryWallCheck.position.y));
         if (secondaryWallCheck != null)
             Gizmos.DrawLine(secondaryWallCheck.position, new Vector3(secondaryWallCheck.position.x + (wallCheckDistance * (isFacingRight ? 1 : -1)), secondaryWallCheck.position.y));

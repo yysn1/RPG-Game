@@ -26,6 +26,24 @@ public class Enemy : Entity
     [SerializeField] private LayerMask whatIsPlayer;
     [SerializeField] private Transform playerCheck;
     [SerializeField] private float playerCheckDistance = 10f;
+    public Transform player { get; private set; }
+
+    public void TryEnterBattleState(Transform player)
+    {
+        if (stateMachine.currentState == battleState || stateMachine.currentState == attackState || stateMachine.currentState == retreatState)
+            return;
+
+        this.player = player;
+        stateMachine.ChangeState(battleState);
+    }
+
+    public Transform GetPlayerReference()
+    {
+        if (player == null)
+            player = PlayerDetection().transform;
+
+        return player;
+    }
 
     public RaycastHit2D PlayerDetection()
     {

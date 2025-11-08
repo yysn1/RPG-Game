@@ -15,7 +15,7 @@ public class EnemyAttackState : EnemyHitState
     {
         base.Update();
 
-        if (ShouldRetreat())
+        if (ShouldRetreat() && enemy.PlayerDetection())
         {
             stateMachine.ChangeState(enemy.retreatState);
         }
@@ -25,4 +25,6 @@ public class EnemyAttackState : EnemyHitState
             stateMachine.ChangeState(enemy.battleState);
         }
     }
+
+    private bool ShouldRetreat() => DistanceToPlayer() < enemy.minRetreatDistance;
 }

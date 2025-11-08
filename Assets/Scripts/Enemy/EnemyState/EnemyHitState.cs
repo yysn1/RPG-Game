@@ -13,7 +13,7 @@ public class EnemyHitState : EnemyState
         base.Enter();
 
         if (player == null)
-            player = enemy.PlayerDetection().transform;
+            player = enemy.GetPlayerReference();
     }
 
 
@@ -33,5 +33,4 @@ public class EnemyHitState : EnemyState
         return player.position.x > enemy.transform.position.x ? 1 : -1;
     }
 
-    protected bool ShouldRetreat() => DistanceToPlayer() < enemy.minRetreatDistance;
 }

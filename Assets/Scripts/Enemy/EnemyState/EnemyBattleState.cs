@@ -13,6 +13,7 @@ public class EnemyBattleState : EnemyHitState
     public override void Enter()
     {
         base.Enter();
+        UpdataBattleTimer();
     }
 
     public override void Update()
