@@ -32,7 +32,9 @@ public class EntityHealth : MonoBehaviour
     public virtual void TakeDamage(float damage, Transform damageDealer)
     {
         if (isDead)
+        {
             return;
+        }
 
         Vector2 knockback = CalculateKnockback(damage, damageDealer);
         float duration = CalculateDuration(damage);
@@ -55,7 +57,7 @@ public class EntityHealth : MonoBehaviour
     private void Die()
     {
         isDead = true;
-        Debug.Log($"{gameObject.name} has died.");
+        entity.EntityDead();
     }
 
     private Vector2 CalculateKnockback(float damage, Transform damageDealer)

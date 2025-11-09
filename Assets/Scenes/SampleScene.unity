@@ -22075,7 +22075,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a1612776d8bdfa469ae72b90ec724b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityCombat
-  damage: 10
+  damage: 25
   targetCheck: {fileID: 699797857}
   targetCheckRadius: 1
   whatIsTarget:
@@ -22093,8 +22093,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cb2e2aa2a2f9f940a790d2ad12609f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityHealth
+  currentHp: 0
   MaxHp: 100
   isDead: 0
+  knockbackPower: {x: 1.5, y: 2.5}
+  heavyKnockbackPower: {x: 7, y: 7}
+  knockbackDuration: 0.2
+  heavyKnockbackDuration: 0.5
+  heavyDamageThreshold: 0.3
 --- !u!114 &964348719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39635,8 +39641,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a045927be2173f4f872c5b87e95fe3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
+  currentHp: 0
   MaxHp: 100
   isDead: 0
+  knockbackPower: {x: 1.5, y: 2.5}
+  heavyKnockbackPower: {x: 7, y: 7}
+  knockbackDuration: 0.2
+  heavyKnockbackDuration: 0.5
+  heavyDamageThreshold: 0.3
 --- !u!114 &1248922742
 MonoBehaviour:
   m_ObjectHideFlags: 0

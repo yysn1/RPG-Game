@@ -1,3 +1,4 @@
+using Unity.XR.OpenVR;
 using UnityEngine;
 
 public class Enemy : Entity
@@ -7,6 +8,11 @@ public class Enemy : Entity
     public EnemyAttackState attackState;
     public EnemyBattleState battleState;
     public EnemyRetreatState retreatState; //
+    public EnemyDeadState deadState;
+
+    [Header("Death settings")]
+    public float fadeDuration = 1.5f;
+    public float deathAnimDuration = 5f;
 
     [Header("Battle details")]
     public float battleMoveSpeed = 2.5f;
@@ -28,9 +34,16 @@ public class Enemy : Entity
     [SerializeField] private float playerCheckDistance = 10f;
     public Transform player { get; private set; }
 
+    public override void EntityDead()
+    {
+        base.EntityDead();
+
+        stateMachine.ChangeState(deadState);
+    }
+
     public void TryEnterBattleState(Transform player)
     {
-        if (stateMachine.currentState == battleState || stateMachine.currentState == attackState || stateMachine.currentState == retreatState)
+        if (stateMachine.currentState == battleState || stateMachine.currentState == attackState || stateMachine.currentState == retreatState || stateMachine.currentState == deadState)
             return;
 
         this.player = player;
