@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PlayerJumpAttackstart
+  m_Name: SkeletonStunned
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,15 +21,19 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 235476124, guid: 81f1ba18361492745ac836c5a21b7c68, type: 3}
-    - time: 0.071428575
-      value: {fileID: 1117839604, guid: 81f1ba18361492745ac836c5a21b7c68, type: 3}
+      value: {fileID: 4277271011309529139, guid: eb569697516658a4b867fbde500f0f34, type: 3}
+    - time: 0.083333336
+      value: {fileID: -1537884627087384292, guid: eb569697516658a4b867fbde500f0f34, type: 3}
+    - time: 0.16666667
+      value: {fileID: 8452754394787171160, guid: eb569697516658a4b867fbde500f0f34, type: 3}
+    - time: 0.25
+      value: {fileID: 6079654374805429708, guid: eb569697516658a4b867fbde500f0f34, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
     flags: 2
-  m_SampleRate: 14
+  m_SampleRate: 12
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -46,14 +50,16 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 235476124, guid: 81f1ba18361492745ac836c5a21b7c68, type: 3}
-    - {fileID: 1117839604, guid: 81f1ba18361492745ac836c5a21b7c68, type: 3}
+    - {fileID: 4277271011309529139, guid: eb569697516658a4b867fbde500f0f34, type: 3}
+    - {fileID: -1537884627087384292, guid: eb569697516658a4b867fbde500f0f34, type: 3}
+    - {fileID: 8452754394787171160, guid: eb569697516658a4b867fbde500f0f34, type: 3}
+    - {fileID: 6079654374805429708, guid: eb569697516658a4b867fbde500f0f34, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.14285715
+    m_StopTime: 0.33333334
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

@@ -22037,6 +22037,96 @@ Transform:
   - {fileID: 1920183971}
   m_Father: {fileID: 696720941}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &912160893
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 912160894}
+  - component: {fileID: 912160895}
+  m_Layer: 8
+  m_Name: CounterAlert
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &912160894
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 912160893}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.036, y: 1.041, z: 0}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1248922739}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &912160895
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 912160893}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: -344735675
+  m_SortingLayer: -2
+  m_SortingOrder: -1
+  m_Sprite: {fileID: 3084388393096246226, guid: 6093d2d3d4527004c963a969d711ee3a, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &964348712
 GameObject:
   m_ObjectHideFlags: 0
@@ -39695,11 +39785,14 @@ MonoBehaviour:
   secondaryWallCheck: {fileID: 0}
   fadeDuration: 1.5
   deathAnimDuration: 5
-  battleMoveSpeed: 2.5
+  battleMoveSpeed: 3
   attackDestance: 2
   battleTimeDuration: 5
   minRetreatDistance: 0.5
   retreatVelocity: {x: 5, y: 3}
+  stunnedDuration: 1.5
+  stunnedVelocity: {x: 7, y: 7}
+  canBeStunned: 0
   moveSpeed: 1.4
   idleTime: 2
   moveAnimSpeedMultiplier: 1
@@ -39724,6 +39817,7 @@ Transform:
   - {fileID: 1894495773}
   - {fileID: 7499846}
   - {fileID: 1766095923}
+  - {fileID: 912160894}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1248922740
@@ -39773,11 +39867,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1248922735}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 939537059f0f4f646a6f5de489352a12, type: 3}
+  m_Script: {fileID: 11500000, guid: d63f4467952a5644facf4a50cbbb1da0, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EntityVFX
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyVFX
   onDamageMaterial: {fileID: 2100000, guid: 3fa52cb34f04af54d84a08776a52d370, type: 2}
-  onDamageVFXDuration: 0.15
+  onDamageVFXDuration: 0.2
+  counterAlert: {fileID: 912160893}
 --- !u!1 &1547500721
 GameObject:
   m_ObjectHideFlags: 0
@@ -39880,7 +39975,7 @@ Transform:
   m_GameObject: {fileID: 1547500721}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.36, y: -2.393, z: 0}
+  m_LocalPosition: {x: 10.56, y: 2.613, z: 0}
   m_LocalScale: {x: 1.8, y: 1.8, z: 1.8}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -40217,9 +40312,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1894495772}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d647bf5933fcf264c8df2d11b999e41d, type: 3}
+  m_Script: {fileID: 11500000, guid: 6aaca32ee57407b46a2e3222ae9d58a1, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EntityAnimationTriggers
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAnimationTriggers
 --- !u!1 &1920183970
 GameObject:
   m_ObjectHideFlags: 0
