@@ -1,10 +1,13 @@
 using System;
 using System.Collections;
+using Unity.XR.OpenVR;
 using UnityEditor.Tilemaps;
 using UnityEngine;
 
 public class Player : Entity
 {
+    public static event Action OnPlayerDeath;
+
     public InputSystem_Actions input { get; private set; }
 
     public PlayerIdleState idleState { get; private set; }
@@ -16,6 +19,7 @@ public class Player : Entity
     public PlayerDashState dashState { get; private set; }
     public PlayerBasicAttackState basicAttackState { get; private set; }
     public PlayerJumpAttackState jumpAttackState { get; private set; }
+    public PlayerDeadState deadState { get; private set; }
 
     [Header("Attack details")]
     public Vector2[] attackVelocity;
@@ -54,12 +58,20 @@ public class Player : Entity
         dashState = new PlayerDashState(this, stateMachine, "dash");
         basicAttackState = new PlayerBasicAttackState(this, stateMachine, "basicAttack");
         jumpAttackState = new PlayerJumpAttackState(this, stateMachine, "jumpAttack");
+        deadState = new PlayerDeadState(this, stateMachine, "dead");
     }
 
     protected override void Start()
     {
         base.Start();
         stateMachine.Initialize(idleState);
+    }
+
+    public override void EntityDead()
+    {
+        base.EntityDead();
+        OnPlayerDeath?.Invoke();
+        stateMachine.ChangeState(deadState);
     }
 
     public void EnterAttackStateWithDelay()

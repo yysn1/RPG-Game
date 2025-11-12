@@ -18,8 +18,8 @@ public class EnemyDeadState : EnemyState
     {
         base.Enter();
 
-        enemy.rb.linearVelocity = Vector2.zero;
-        enemy.rb.simulated = false;
+        rb.linearVelocity = Vector2.zero;
+        rb.simulated = false;
         enemy.StartCoroutine(DeathSequence());
         stateMachine.SwitchOffStateMachine();
     }

@@ -34,6 +34,11 @@ public class Enemy : Entity
     [SerializeField] private float playerCheckDistance = 10f;
     public Transform player { get; private set; }
 
+    private void HandlePlayerDeath()
+    {
+        stateMachine.ChangeState(idleState);
+    }
+
     public override void EntityDead()
     {
         base.EntityDead();
@@ -80,5 +85,15 @@ public class Enemy : Entity
         Gizmos.DrawLine(playerCheck.position, new Vector3(playerCheck.position.x + (facingDir * attackDestance), playerCheck.position.y));
         Gizmos.color = Color.green;
         Gizmos.DrawLine(playerCheck.position, new Vector3(playerCheck.position.x + (facingDir * minRetreatDistance), playerCheck.position.y));
+    }
+
+    private void OnEnable()
+    {
+        Player.OnPlayerDeath += HandlePlayerDeath;
+    }
+
+    private void OnDisable()
+    {
+        Player.OnPlayerDeath -= HandlePlayerDeath;
     }
 }

@@ -1,9 +1,6 @@
-using System;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
-public class EntityHealth : MonoBehaviour
+public class EntityHealth : MonoBehaviour, IDamgable
 {
     private EntityVFX entityVFX;
     private Entity entity;
@@ -65,7 +62,7 @@ public class EntityHealth : MonoBehaviour
         int direction = transform.position.x > damageDealer.position.x ? 1 : -1;
         Vector2 knockback = IsHeavyDamage(damage) ? heavyKnockbackPower : knockbackPower;
         knockback.x *= direction;
-        
+
         return knockback;
     }
 
