@@ -22300,6 +22300,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EntityVFX
   onDamageMaterial: {fileID: 2100000, guid: 3fa52cb34f04af54d84a08776a52d370, type: 2}
   onDamageVFXDuration: 0.2
+  hitVFXColor: {r: 0.76470596, g: 0.7960785, b: 0.8588236, a: 1}
+  hitVFX: {fileID: 7622375169351055764, guid: f591c4f82a9af9f4888d28109f7a6fcc, type: 3}
 --- !u!114 &964348720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39833,7 +39835,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a1612776d8bdfa469ae72b90ec724b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityCombat
-  damage: 25
+  damage: 10
   targetCheck: {fileID: 1766095923}
   targetCheckRadius: 1
   whatIsTarget:
@@ -39873,6 +39875,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyVFX
   onDamageMaterial: {fileID: 2100000, guid: 3fa52cb34f04af54d84a08776a52d370, type: 2}
   onDamageVFXDuration: 0.2
+  hitVFXColor: {r: 0.2392157, g: 0.27058825, b: 0.32156864, a: 1}
+  hitVFX: {fileID: 7622375169351055764, guid: f591c4f82a9af9f4888d28109f7a6fcc, type: 3}
   counterAlert: {fileID: 912160893}
 --- !u!1 &1547500721
 GameObject:
@@ -40010,6 +40014,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EntityVFX
   onDamageMaterial: {fileID: 2100000, guid: 3fa52cb34f04af54d84a08776a52d370, type: 2}
   onDamageVFXDuration: 0.2
+  hitVFXColor: {r: 1, g: 1, b: 1, a: 1}
+  hitVFX: {fileID: 0}
 --- !u!1 &1692835514
 GameObject:
   m_ObjectHideFlags: 0
