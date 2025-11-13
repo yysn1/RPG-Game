@@ -13,13 +13,13 @@ public class EnemyAnimationTriggers : EntityAnimationTriggers
 
     private void EnableCounterWindow()
     {
-        enemyVFX.EnableCounterAlertWindow(true);
+        enemyVFX.EnableCounterAlert(true);
         enemy.EnableCounterWindow(true);
     }
 
     private void DisableCounterWindow()
     {
-        enemyVFX.EnableCounterAlertWindow(false);
+        enemyVFX.EnableCounterAlert(false);
         enemy.EnableCounterWindow(false);
     }
 }

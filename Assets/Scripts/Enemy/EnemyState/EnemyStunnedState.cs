@@ -12,7 +12,7 @@ public class EnemyStunnedState : EnemyState
     {
         base.Enter();
 
-        vfx.EnableCounterAlertWindow(false);
+        vfx.EnableCounterAlert(false);
         enemy.EnableCounterWindow(false);
 
         stateTimer = enemy.stunnedDuration;

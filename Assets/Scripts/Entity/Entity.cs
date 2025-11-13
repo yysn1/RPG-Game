@@ -1,8 +1,11 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
 public class Entity : MonoBehaviour
 {
+    public event Action OnFlipped;
+    
     public Animator anim { get; private set; }
     public Rigidbody2D rb { get; private set; }
 
@@ -103,6 +106,8 @@ public class Entity : MonoBehaviour
         isFacingRight = !isFacingRight;
         facingDir *= -1;
         transform.Rotate(0f, 180f, 0f);
+
+        OnFlipped?.Invoke();
     }
 
     private void HandleGroundDetection() => groundDetected = Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, whatIsGround);
