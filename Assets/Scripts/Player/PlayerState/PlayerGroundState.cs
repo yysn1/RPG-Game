@@ -31,5 +31,10 @@ public class PlayerGroundState : PlayerState
         {
             stateMachine.ChangeState(player.basicAttackState);
         }
+
+        if (input.Player.CounterAttack.WasPressedThisFrame())
+        {
+            stateMachine.ChangeState(player.counterAttackState);
+        }
     }
 }
