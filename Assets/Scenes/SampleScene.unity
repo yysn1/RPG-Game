@@ -22706,6 +22706,7 @@ GameObject:
   - component: {fileID: 964348715}
   - component: {fileID: 964348720}
   - component: {fileID: 964348718}
+  - component: {fileID: 964348721}
   - component: {fileID: 964348719}
   m_Layer: 7
   m_Name: Player
@@ -22845,7 +22846,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityHealth
   currentHp: 0
-  MaxHp: 100
   isDead: 0
   knockbackPower: {x: 1.5, y: 2.5}
   heavyKnockbackPower: {x: 7, y: 7}
@@ -22887,6 +22887,53 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   counterRecovery: 0.4
+--- !u!114 &964348721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 964348712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93861e299c3d1eb42ace2e3ce00a2e67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EntityStats
+  maxHealth:
+    baseValue: 100
+  major:
+    strength:
+      baseValue: 0
+    agility:
+      baseValue: 0
+    intelligence:
+      baseValue: 0
+    vitality:
+      baseValue: 10
+  offense:
+    damage:
+      baseValue: 10
+    critPower:
+      baseValue: 0
+    critChance:
+      baseValue: 0
+    fireDamage:
+      baseValue: 0
+    iceDamage:
+      baseValue: 0
+    lightningDamage:
+      baseValue: 0
+  defense:
+    armor:
+      baseValue: 0
+    evasion:
+      baseValue: 0
+    fireRes:
+      baseValue: 0
+    iceRes:
+      baseValue: 0
+    lightningRes:
+      baseValue: 0
 --- !u!1 &1006218835
 GameObject:
   m_ObjectHideFlags: 0
@@ -40414,6 +40461,7 @@ GameObject:
   - component: {fileID: 1248922736}
   - component: {fileID: 1248922740}
   - component: {fileID: 1248922741}
+  - component: {fileID: 1248922743}
   - component: {fileID: 1248922742}
   m_Layer: 8
   m_Name: Skeleton
@@ -40576,7 +40624,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
   currentHp: 0
-  MaxHp: 100
   isDead: 0
   knockbackPower: {x: 1.5, y: 2.5}
   heavyKnockbackPower: {x: 7, y: 7}
@@ -40600,6 +40647,53 @@ MonoBehaviour:
   hitVFXColor: {r: 0.2392157, g: 0.27058825, b: 0.32156864, a: 1}
   hitVFX: {fileID: 7622375169351055764, guid: f591c4f82a9af9f4888d28109f7a6fcc, type: 3}
   counterAlert: {fileID: 0}
+--- !u!114 &1248922743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1248922735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93861e299c3d1eb42ace2e3ce00a2e67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EntityStats
+  maxHealth:
+    baseValue: 100
+  major:
+    strength:
+      baseValue: 0
+    agility:
+      baseValue: 0
+    intelligence:
+      baseValue: 0
+    vitality:
+      baseValue: 0
+  offense:
+    damage:
+      baseValue: 10
+    critPower:
+      baseValue: 0
+    critChance:
+      baseValue: 0
+    fireDamage:
+      baseValue: 0
+    iceDamage:
+      baseValue: 0
+    lightningDamage:
+      baseValue: 0
+  defense:
+    armor:
+      baseValue: 0
+    evasion:
+      baseValue: 0
+    fireRes:
+      baseValue: 0
+    iceRes:
+      baseValue: 0
+    lightningRes:
+      baseValue: 0
 --- !u!1 &1255757134
 GameObject:
   m_ObjectHideFlags: 0
