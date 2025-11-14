@@ -39,6 +39,12 @@ public class EntityHealth : MonoBehaviour, IDamgable
             return;
         }
 
+        if (AttackEvaded())
+        {
+            Debug.Log($"{gameObject.name} evaded the attack");
+            return;
+        }
+
         Vector2 knockback = CalculateKnockback(damage, damageDealer);
         float duration = CalculateDuration(damage);
 
@@ -57,6 +63,8 @@ public class EntityHealth : MonoBehaviour, IDamgable
             Die();
         }
     }
+
+    private bool AttackEvaded() => Random.Range(0, 100) < stats.GetEvasion();
 
     private void Die()
     {
