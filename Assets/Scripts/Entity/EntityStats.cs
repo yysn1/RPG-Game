@@ -8,12 +8,33 @@ public class EntityStats : MonoBehaviour
     public StatOffenseGroup offense;
     public StatDefenseGroup defense;
 
+    public float GetPhysicalDamage(out bool isCrit)
+    {
+        float baseDamage = offense.damage.GetValue();
+        float bonusDamage = major.strength.GetValue();
+        float totalBaseDamage = baseDamage + bonusDamage;
+
+        float baseCritChance = offense.critChance.GetValue();
+        float bonusCritChance = major.agility.GetValue();
+        float critChance = baseCritChance + bonusCritChance;
+
+        float baseCritPower = offense.critPower.GetValue();
+        float bonusCritPower = major.strength.GetValue();
+        float critPower = (baseCritPower + bonusCritPower) / 100;
+
+        isCrit = Random.Range(0, 100) < critChance;
+        float finalDamage = isCrit ? totalBaseDamage * critPower : totalBaseDamage;
+
+        return finalDamage;
+    }
+
     public float GetMaxHealth()
     {
-        float baseHp = maxHealth.GetValue();
-        float bonusHp = major.vitality.GetValue() * 5f;
+        float baseMaxHealth = maxHealth.GetValue();
+        float bonusMaxHealth = major.vitality.GetValue() * 5f;
+        float finalMaxHealth = baseMaxHealth + bonusMaxHealth;
 
-        return baseHp + bonusHp;
+        return finalMaxHealth;
     }
 
     public float GetEvasion()

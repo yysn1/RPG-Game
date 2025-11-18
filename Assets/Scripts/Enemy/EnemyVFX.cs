@@ -3,7 +3,7 @@ using UnityEngine;
 public class EnemyVFX : EntityVFX
 {
     [Header("Counter Window")]
-    [SerializeField] private GameObject counterAlert;
+    [SerializeField] private GameObject counterAlert;   // Temporarily deprecated
 
     public void EnableCounterAlert(bool enable)
     {

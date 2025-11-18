@@ -22868,6 +22868,7 @@ MonoBehaviour:
   onDamageVFXDuration: 0.2
   hitVFXColor: {r: 0.76470596, g: 0.7960785, b: 0.8588236, a: 1}
   hitVFX: {fileID: 7622375169351055764, guid: f591c4f82a9af9f4888d28109f7a6fcc, type: 3}
+  critHitVFX: {fileID: 7487139296737914592, guid: bcc4f44fd67c77044a060455e6ba817f, type: 3}
 --- !u!114 &964348720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22880,7 +22881,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5e3948832d6e8949a3406a7d9f14a39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCombat
-  damage: 10
   targetCheck: {fileID: 699797857}
   targetCheckRadius: 1
   whatIsTarget:
@@ -22900,7 +22900,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityStats
   maxHealth:
-    baseValue: 100
+    baseValue: 10000
   major:
     strength:
       baseValue: 0
@@ -22914,9 +22914,9 @@ MonoBehaviour:
     damage:
       baseValue: 10
     critPower:
-      baseValue: 0
+      baseValue: 300
     critChance:
-      baseValue: 0
+      baseValue: 60
     fireDamage:
       baseValue: 0
     iceDamage:
@@ -40605,7 +40605,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a1612776d8bdfa469ae72b90ec724b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityCombat
-  damage: 10
   targetCheck: {fileID: 1766095923}
   targetCheckRadius: 1
   whatIsTarget:
@@ -40646,6 +40645,7 @@ MonoBehaviour:
   onDamageVFXDuration: 0.2
   hitVFXColor: {r: 0.2392157, g: 0.27058825, b: 0.32156864, a: 1}
   hitVFX: {fileID: 7622375169351055764, guid: f591c4f82a9af9f4888d28109f7a6fcc, type: 3}
+  critHitVFX: {fileID: 7487139296737914592, guid: bcc4f44fd67c77044a060455e6ba817f, type: 3}
   counterAlert: {fileID: 0}
 --- !u!114 &1248922743
 MonoBehaviour:
@@ -40660,7 +40660,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityStats
   maxHealth:
-    baseValue: 100
+    baseValue: 10000
   major:
     strength:
       baseValue: 0
@@ -40674,9 +40674,9 @@ MonoBehaviour:
     damage:
       baseValue: 10
     critPower:
-      baseValue: 0
+      baseValue: 250
     critChance:
-      baseValue: 0
+      baseValue: 50
     fireDamage:
       baseValue: 0
     iceDamage:
@@ -41095,6 +41095,7 @@ MonoBehaviour:
   onDamageVFXDuration: 0.2
   hitVFXColor: {r: 1, g: 1, b: 1, a: 1}
   hitVFX: {fileID: 0}
+  critHitVFX: {fileID: 0}
 --- !u!1 &1560907187
 GameObject:
   m_ObjectHideFlags: 0
