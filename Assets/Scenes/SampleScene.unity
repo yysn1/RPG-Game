@@ -253,7 +253,7 @@ Transform:
   m_GameObject: {fileID: 198470610}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.813213, y: -2.7597094, z: 15.258335}
+  m_LocalPosition: {x: -2.6032128, y: -2.7597094, z: 15.258335}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -22079,7 +22079,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.813213, y: -2.7597094, z: 15.258335}
+  m_LocalPosition: {x: -2.6032128, y: -2.7597094, z: 15.258335}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -22758,7 +22758,7 @@ Transform:
   m_GameObject: {fileID: 964348712}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.9, y: -1.68, z: 0}
+  m_LocalPosition: {x: -9.69, y: -1.68, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -22909,14 +22909,16 @@ MonoBehaviour:
     intelligence:
       baseValue: 0
     vitality:
-      baseValue: 10
+      baseValue: 0
   offense:
     damage:
       baseValue: 10
     critPower:
-      baseValue: 300
+      baseValue: 0
     critChance:
-      baseValue: 60
+      baseValue: 0
+    armorReduction:
+      baseValue: 0
     fireDamage:
       baseValue: 0
     iceDamage:
@@ -40581,7 +40583,7 @@ Transform:
   m_GameObject: {fileID: 1248922735}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.47, y: -1.69, z: 0}
+  m_LocalPosition: {x: -13.87, y: -1.69, z: 0}
   m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -40674,9 +40676,11 @@ MonoBehaviour:
     damage:
       baseValue: 10
     critPower:
-      baseValue: 250
+      baseValue: 0
     critChance:
-      baseValue: 50
+      baseValue: 0
+    armorReduction:
+      baseValue: 0
     fireDamage:
       baseValue: 0
     iceDamage:

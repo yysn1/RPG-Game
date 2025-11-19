@@ -8,6 +8,7 @@ public class StatOffenseGroup
     public Stat damage;
     public Stat critPower;
     public Stat critChance;
+    public Stat armorReduction;
 
     //  Elemental damage
     public Stat fireDamage;
