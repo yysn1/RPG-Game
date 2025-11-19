@@ -121,3 +121,4 @@
 ## 🙏 致谢
 - [Unity Engine](https://unity.com/) - 游戏开发引擎
 - [Unity Alex Dev](https://www.udemy.com/user/alex-13394/) - 讲师
+- [Itch](https://itch.io/) - 素材
