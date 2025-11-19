@@ -6,9 +6,11 @@ public class EnemyDeadState : EnemyState
     private SpriteRenderer sr;
     private float fadeDuration;
     private float deathAnimDuration;
+    private GameObject healthBarUI;
 
     public EnemyDeadState(Enemy enemy, StateMachine stateMachine, string animBoolName) : base(enemy, stateMachine, animBoolName)
     {
+        healthBarUI = GameObject.Find("HealthBar_UI");
         sr = enemy.GetComponentInChildren<SpriteRenderer>();
         fadeDuration = enemy.fadeDuration;
         deathAnimDuration = enemy.deathAnimDuration;
@@ -20,6 +22,10 @@ public class EnemyDeadState : EnemyState
 
         rb.linearVelocity = Vector2.zero;
         rb.simulated = false;
+        if (healthBarUI != null)
+        {
+            healthBarUI.SetActive(false);
+        }
         enemy.StartCoroutine(DeathSequence());
         stateMachine.SwitchOffStateMachine();
     }

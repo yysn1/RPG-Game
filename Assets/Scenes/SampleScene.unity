@@ -253,7 +253,7 @@ Transform:
   m_GameObject: {fileID: 198470610}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.6032128, y: -2.7597094, z: 15.258335}
+  m_LocalPosition: {x: 13.006786, y: -3.7997093, z: 15.258335}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -22079,7 +22079,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.6032128, y: -2.7597094, z: 15.258335}
+  m_LocalPosition: {x: 13.006786, y: -3.7997093, z: 15.258335}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -22758,7 +22758,7 @@ Transform:
   m_GameObject: {fileID: 964348712}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.69, y: -1.68, z: 0}
+  m_LocalPosition: {x: 5.92, y: -2.72, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -22900,7 +22900,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityStats
   maxHealth:
-    baseValue: 10000
+    baseValue: 100
   major:
     strength:
       baseValue: 0
@@ -40662,7 +40662,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityStats
   maxHealth:
-    baseValue: 10000
+    baseValue: 100
   major:
     strength:
       baseValue: 0
@@ -40919,7 +40919,7 @@ RectTransform:
   m_Father: {fileID: 1255757135}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0.010002136, y: 0.04300022}
   m_SizeDelta: {x: -3.85, y: 3.868}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -41119,7 +41119,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1560907188
 RectTransform:
   m_ObjectHideFlags: 0
