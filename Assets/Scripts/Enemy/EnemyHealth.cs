@@ -4,10 +4,10 @@ public class EnemyHealth : EntityHealth
 {
     private Enemy enemy => GetComponent<Enemy>();
 
-    public override bool TakeDamage(float damage, Transform damageDealer)
+    public override bool TakeDamage(float damage, float elementalDamage, ElementType element, Transform damageDealer)
     {
 
-        if (!base.TakeDamage(damage, damageDealer))
+        if (!base.TakeDamage(damage, elementalDamage, element, damageDealer))
         {
             return false;
         }
