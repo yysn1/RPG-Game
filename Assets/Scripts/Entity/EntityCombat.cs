@@ -10,6 +10,10 @@ public class EntityCombat : MonoBehaviour
     [SerializeField] private float targetCheckRadius = 1f;
     [SerializeField] private LayerMask whatIsTarget;
 
+    [Header("Status effect details")]
+    [SerializeField] private float defaultDuration = 3f;
+    [SerializeField] private float chillSlowMultiplier = .2f;
+
     private void Awake()
     {
         vfx = GetComponent<EntityVFX>();
@@ -33,8 +37,29 @@ public class EntityCombat : MonoBehaviour
             float elementalDamage = stats.GetElementalDamage(out ElementType element);
             bool targetGotHit = damagable.TakeDamage(damage, elementalDamage, element, transform);
             
+            if (element != ElementType.None)
+            {
+                ApplyStatusEffect(target.transform, element);
+            }
+
             if (targetGotHit)
+            {
+                vfx.UpdateOnHitColor(element);
                 vfx.CreateOnHitVFX(target.transform, isCrit);
+            }
+        }
+    }
+
+    public void ApplyStatusEffect(Transform target, ElementType element)
+    {
+        EntityStatusHandle statusHandle = target.GetComponent<EntityStatusHandle>();
+
+        if (statusHandle == null)
+            return;
+
+        if (element == ElementType.Ice && statusHandle.CanBeApplied(ElementType.Ice))
+        {
+            statusHandle.ApplyChilledEffect(defaultDuration, chillSlowMultiplier);
         }
     }
 
