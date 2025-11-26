@@ -68,7 +68,7 @@ public class EntityHealth : MonoBehaviour, IDamgable
         entity?.ReciveKnockback(knockback, duration);
     }
 
-    protected void ReduceHp(float damage)
+    public void ReduceHp(float damage)
     {
         entityVFX?.PlayOnDamageVFX();
         currentHp -= damage;
