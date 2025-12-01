@@ -55,7 +55,7 @@ public class EntityStatusHandle : MonoBehaviour
     private void DoLightningStrike(float damage)
     {
         Instantiate(lightningStrikeVFX, transform.position, Quaternion.identity);
-        entityHealth.ReduceHp(damage);
+        entityHealth.ReduceHealth(damage);
     }
 
     private IEnumerator ElectrifyEffectCo(float duration)
@@ -88,7 +88,7 @@ public class EntityStatusHandle : MonoBehaviour
 
         for (int i = 0; i < tickCount; i++)
         {
-            entityHealth.ReduceHp(damagePerTick);
+            entityHealth.ReduceHealth(damagePerTick);
             yield return new WaitForSeconds(tickInterval);
         }
 
