@@ -136,4 +136,38 @@ public class EntityStats : MonoBehaviour
 
         return finalEvasion;
     }
+
+    public Stat GetStatByType(StatType statType)
+    {
+        Stat result = statType switch
+        {
+            StatType.MaxHealth => resource.maxHealth,
+            StatType.HealthRegen => resource.healthRegen,
+            StatType.Strength => major.strength,
+            StatType.Agility => major.agility,
+            StatType.Intelligence => major.intelligence,
+            StatType.Vitality => major.vitality,
+            StatType.AttackSpeed => offense.attackSpeed,
+            StatType.Damage => offense.damage,
+            StatType.CritChance => offense.critChance,
+            StatType.CritPower => offense.critPower,
+            StatType.ArmorReduction => offense.armorReduction,
+            StatType.FireDamage => offense.fireDamage,
+            StatType.IceDamage => offense.iceDamage,
+            StatType.LightningDamage => offense.lightningDamage,
+            StatType.Armor => defense.armor,
+            StatType.Evasion => defense.evasion,
+            StatType.IceResistance => defense.iceRes,
+            StatType.FireResistance => defense.fireRes,
+            StatType.LightningResistance => defense.lightningRes,
+            _ => null
+        };
+
+        if (result == null)
+        {
+            Debug.LogError($"StatType {statType} not found in EntityStats.");
+        }
+
+        return result;
+    }
 }
