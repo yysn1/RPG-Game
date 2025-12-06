@@ -46,6 +46,8 @@ public class Stat
 
         return finalValue;
     }
+
+    public void SetBaseValue(float value) => baseValue = value;
 }
 
 [Serializable]
